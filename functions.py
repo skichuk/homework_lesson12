@@ -21,3 +21,11 @@ def save_picture(picture) -> str:
     path = f'./uploads/images/{filename}'
     picture.save(path)
     return path
+
+
+def func_add_post(post: dict) -> dict:
+    posts = load_posts()
+    posts.append(post)
+    with open(POSTS_PATH, 'w', encoding='utf-8') as file:
+        json.dump(posts, file, ensure_ascii=False)
+    return post
