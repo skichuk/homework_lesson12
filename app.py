@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 app.config['JSON_AS_ASCII'] = False
 
+# Импортируем блюпринты
+
 app.register_blueprint(main_blueprint)
 app.register_blueprint(loader_blueprint)
 

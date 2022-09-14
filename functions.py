@@ -4,11 +4,17 @@ POSTS_PATH = 'posts.json'
 
 
 def load_posts():
+    """
+    Функция загружает посты из файла posts.json
+    """
     with open(POSTS_PATH, 'r', encoding='utf-8') as file:
         return json.load(file)
 
 
 def get_posts_by_word(word):
+    """
+    Функция ищет посты, содержащие искомое слово
+    """
     result = []
     for post in load_posts():
         if word.lower() in post['content'].lower():
@@ -17,6 +23,9 @@ def get_posts_by_word(word):
 
 
 def save_picture(picture) -> str:
+    """
+    Функция создает путь для загрузки изображения
+    """
     filename = picture.filename
     path = f'./uploads/images/{filename}'
     picture.save(path)
@@ -24,6 +33,9 @@ def save_picture(picture) -> str:
 
 
 def func_add_post(post: dict) -> dict:
+    """
+    Функция добавляет посты в файл posts.json
+    """
     posts = load_posts()
     posts.append(post)
     with open(POSTS_PATH, 'w', encoding='utf-8') as file:
